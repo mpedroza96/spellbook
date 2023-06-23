@@ -23,7 +23,7 @@
                 'dune.data_explorer.contributors': contributors | as_text
             } -%}
       {%- if model.config.materialized == "view" -%}
-        CALL {{ model.database }}._internal.alter_view_properties('{{ model.schema }}', '{{ model.name }}',
+        CALL {{ model.database }}._internal.alter_view_properties('{{ model.schema }}', '{{ model.alias }}',
           {{ trino_properties(properties) }}
         )
       {%- else -%}

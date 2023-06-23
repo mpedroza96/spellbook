@@ -8,7 +8,7 @@
     {%- else -%}
       {%- set properties = { 'dune.data_explorer.category': 'abstraction' } -%}
       {%- if model.config.materialized == "view" -%}
-        CALL {{ model.database }}._internal.alter_view_properties('{{ model.schema }}', '{{ model.name }}',
+        CALL {{ model.database }}._internal.alter_view_properties('{{ model.schema }}', '{{ model.alias }}',
           {{ trino_properties(properties) }}
         )
       {%- else -%}
